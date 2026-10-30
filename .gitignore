@@ -1,7 +1,5 @@
-# Build artifacts
+config.def.h
 dwm
-dwm.o
-drw.o
-util.o
+*.o
 *.orig
 *.rej
