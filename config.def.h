@@ -37,10 +37,10 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
-static const unsigned int gappih = 10; /* horizontal inner gap */
-static const unsigned int gappiv = 10; /* vertical inner gap */
-static const unsigned int gappoh = 10; /* horizontal outer gap */
-static const unsigned int gappov = 10; /* vertical outer gap */
+static const unsigned int gappih = 2; /* horizontal inner gap */
+static const unsigned int gappiv = 2; /* vertical inner gap */
+static const unsigned int gappoh = 2; /* horizontal outer gap */
+static const unsigned int gappov = 2; /* vertical outer gap */
 static const int smartgaps = 0; /* 1 means no outer gap when only one client */
 static const int refreshrate = 120;  /* refresh rate (per second) for client move/resize */
 
