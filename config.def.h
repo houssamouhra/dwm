@@ -1,12 +1,14 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <X11/XF86keysym.h>
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Maple Mono NF:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char dmenufont[]       = "Maple Mono NF:size=10";
 
 static const char *colors[][3] = {
     /*               fg         bg         border */
@@ -87,10 +89,22 @@ static const char *dmenucmd[] = {
 };
 static const char *termcmd[]  = { "st", NULL };
 
+/* Volume */
+static const char *volup[]   = { "sb-volume", "up", NULL };
+static const char *voldown[] = { "sb-volume", "down", NULL };
+static const char *volmute[] = { "sb-volume", "mute", NULL };
+
+/* Microphone */
+static const char *mictoggle[] = { "sb-mic", "toggle", NULL };
+
+/* Brightness */
+static const char *brightup[]   = { "sb-brightness", "up", NULL };
+static const char *brightdown[] = { "sb-brightness", "down", NULL };
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_space,  spawn,		   {.v = dmenucmd } },
-	{ MODKEY,					    XK_q,	   spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_space,  spawn,	   {.v = dmenucmd } },
+	{ MODKEY,			XK_q,	   spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -99,20 +113,27 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_z,      zoom,           {0} },
+	{ MODKEY,			XK_c,	   spawn,	   SHCMD("clipmenu -vi -i -l 15") }, 
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,						XK_w,      killclient,     {0} },
+	{ MODKEY,			XK_w,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,             XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_Return, togglefloating, {0} },
-	{ MODKEY,					    XK_f,      togglefullscr,  {0} },
+	{ MODKEY,			XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ 0,				XF86XK_AudioRaiseVolume, spawn, {.v = volup} },
+	{ 0,				XF86XK_AudioLowerVolume, spawn, {.v = voldown} },
+	{ 0,				XF86XK_AudioMute,	 spawn, {.v = volmute} },
+	{ 0,				XF86XK_AudioMicMute,	 spawn, {.v = mictoggle} },
+	{ 0,				XF86XK_MonBrightnessUp,	 spawn, {.v = brightup} },
+	{ 0,				XF86XK_MonBrightnessDown,spawn, {.v = brightdown} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -122,8 +143,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ControlMask|ShiftMask, XK_q,		  quit,		   {.i = 1} }, /* restart dwm */
-	{ MODKEY|ShiftMask,             XK_BackSpace, quit,        {.i = 0} }, /* quit dwm */
+	{ MODKEY|ControlMask|ShiftMask, XK_q,	     quit,	   {.i = 1} }, /* restart dwm */
+	{ MODKEY|ShiftMask,             XK_BackSpace,quit,         {.i = 0} }, /* quit dwm */
 };
 
 /* button definitions */
