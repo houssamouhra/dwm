@@ -101,6 +101,9 @@ static const char *mictoggle[] = { "sb-mic", "toggle", NULL };
 static const char *brightup[]   = { "sb-brightness", "up", NULL };
 static const char *brightdown[] = { "sb-brightness", "down", NULL };
 
+/* Lock screen */
+static const char *lockcmd[] = { "lock", NULL };
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,	   {.v = dmenucmd } },
@@ -128,12 +131,6 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ 0,				XF86XK_AudioRaiseVolume, spawn, {.v = volup} },
-	{ 0,				XF86XK_AudioLowerVolume, spawn, {.v = voldown} },
-	{ 0,				XF86XK_AudioMute,	 spawn, {.v = volmute} },
-	{ 0,				XF86XK_AudioMicMute,	 spawn, {.v = mictoggle} },
-	{ 0,				XF86XK_MonBrightnessUp,	 spawn, {.v = brightup} },
-	{ 0,				XF86XK_MonBrightnessDown,spawn, {.v = brightdown} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -145,6 +142,13 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ControlMask|ShiftMask, XK_q,	     quit,	   {.i = 1} }, /* restart dwm */
 	{ MODKEY|ShiftMask,             XK_BackSpace,quit,         {.i = 0} }, /* quit dwm */
+	{ MODKEY,			XK_x,			 spawn, {.v = lockcmd} },
+	{ 0,				XF86XK_AudioRaiseVolume, spawn, {.v = volup} },
+	{ 0,				XF86XK_AudioLowerVolume, spawn, {.v = voldown} },
+	{ 0,				XF86XK_AudioMute,	 spawn, {.v = volmute} },
+	{ 0,				XF86XK_AudioMicMute,	 spawn, {.v = mictoggle} },
+	{ 0,				XF86XK_MonBrightnessUp,	 spawn, {.v = brightup} },
+	{ 0,				XF86XK_MonBrightnessDown,spawn, {.v = brightdown} },
 };
 
 /* button definitions */
