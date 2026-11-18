@@ -14,7 +14,7 @@ static const char dmenufont[]       = "Maple Mono NF:size=10";
 
 static const char *colors[][3] = {
     /*               fg         bg         border */
-    [SchemeNorm] = { "#c0caf5", "#1a1b26", "#565f89" },
+    [SchemeNorm] = { "#c0caf5", "#16161e", "#565f89" },
     [SchemeSel]  = { "#c0caf5", "#292e42", "#7aa2f7" },
 };
 
