@@ -24,7 +24,7 @@ static const char *colors[][3] = {
 };
 
 static const double activeopacity   = 1.0;   /* focused window */
-static const double inactiveopacity = 0.85;  /* unfocused windows */
+static const double inactiveopacity = 0.9;  /* unfocused windows */
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
