@@ -90,6 +90,7 @@ static const char *dmenucmd[] = {
     NULL
 };
 static const char *termcmd[]  = { "st", NULL };
+static const char *yazicmd[]  = { "st", "-e", "yazi", NULL };
 
 /* Volume */
 static const char *volup[]   = { "sb-volume", "up", NULL };
@@ -110,6 +111,7 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,	   {.v = dmenucmd } },
 	{ MODKEY,			XK_q,	   spawn,          {.v = termcmd } },
+	{ MODKEY,			XK_e,	   spawn,          {.v = yazicmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
