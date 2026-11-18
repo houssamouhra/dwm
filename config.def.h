@@ -14,8 +14,8 @@ static const char dmenufont[]       = "Maple Mono NF:size=10";
 
 static const char *colors[][3] = {
     /*                   fg         bg         border */
-    [SchemeNorm]     = { "#c0caf5", "#16161e", "#16161e" }, /* window border (unfocused) */
-    [SchemeSel]      = { "#c0caf5", "#16161e", "#16161e" }, /* window border (focused) */
+    [SchemeNorm]     = { "#c0caf5", "#16161e", "#000000" }, /* window border (unfocused) */
+    [SchemeSel]      = { "#c0caf5", "#16161e", "#000000" }, /* window border (focused) */
     [SchemeStatus]   = { "#c0caf5", "#16161e", "#000000" }, /* status text */
     [SchemeTagsSel]  = { "#c0caf5", "#292e42", "#000000" }, /* selected tag: colored number */
     [SchemeTagsNorm] = { "#565f89", "#16161e", "#000000" }, /* other tags: dim */
