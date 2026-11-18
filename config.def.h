@@ -13,10 +13,18 @@ static const char *fonts[]          = { "Maple Mono NF:size=10" };
 static const char dmenufont[]       = "Maple Mono NF:size=10";
 
 static const char *colors[][3] = {
-    /*               fg         bg         border */
-    [SchemeNorm] = { "#c0caf5", "#16161e", "#565f89" },
-    [SchemeSel]  = { "#c0caf5", "#292e42", "#7aa2f7" },
+    /*                   fg         bg         border */
+    [SchemeNorm]     = { "#c0caf5", "#16161e", "#16161e" }, /* window border (unfocused) */
+    [SchemeSel]      = { "#c0caf5", "#16161e", "#16161e" }, /* window border (focused) */
+    [SchemeStatus]   = { "#c0caf5", "#16161e", "#000000" }, /* status text */
+    [SchemeTagsSel]  = { "#c0caf5", "#292e42", "#000000" }, /* selected tag: colored number */
+    [SchemeTagsNorm] = { "#565f89", "#16161e", "#000000" }, /* other tags: dim */
+    [SchemeInfoSel]  = { "#c0caf5", "#16161e", "#000000" }, /* window title */
+    [SchemeInfoNorm] = { "#565f89", "#16161e", "#000000" }, /* window title, nothing focused */
 };
+
+static const double activeopacity   = 1.0;   /* focused window */
+static const double inactiveopacity = 0.85;  /* unfocused windows */
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
