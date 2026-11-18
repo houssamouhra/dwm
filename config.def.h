@@ -152,6 +152,17 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+
+	/* cfacts (resize client within the stack) */
+	{ MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
+	{ MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
+
+	/* gaps */
+	{ MODKEY,                       XK_equal,  incrgaps,       {.i = +1 } },
+	{ MODKEY,                       XK_minus,  incrgaps,       {.i = -1 } },
+	{ MODKEY,                       XK_g,      togglegaps,     {0} },
+	{ MODKEY|ShiftMask,             XK_g,      defaultgaps,    {0} },
+
 	{ MODKEY|ControlMask|ShiftMask, XK_q,	     quit,	   {.i = 1} }, /* restart dwm */
 	{ MODKEY|ShiftMask,             XK_BackSpace,quit,         {.i = 0} }, /* quit dwm */
 	{ MODKEY,			XK_x,			 spawn, {.v = lockcmd} },
