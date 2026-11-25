@@ -1324,7 +1324,7 @@ Client *
 nexttagged(Client *c) {
 	Client *walked = c->mon->clients;
 	for(;
-		walked && (walked->isfloating || !ISVISIBLEONTAG(walked, c->tags));
+		walked && ((walked->isfloating && !walked->isfullscreen) || !ISVISIBLEONTAG(walked, c->tags));
 		walked = walked->next
 	);
 	return walked;
