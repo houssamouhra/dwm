@@ -51,6 +51,7 @@ static const int refreshrate = 120;  /* refresh rate (per second) for client mov
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
+#include <X11/XF86keysym.h>
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -101,6 +102,27 @@ static const char *dmenucmd[] = {
 static const char *termcmd[]  = { TERMINAL, NULL };
 static const char *lfcmd[]  = { TERMINAL, "-e", "lfub", NULL };
 
+/* statusbar scripts */
+/* Volume */
+static const char *volup[]   = { "sb-volume", "up", NULL };
+static const char *voldown[] = { "sb-volume", "down", NULL };
+static const char *volmute[] = { "sb-volume", "mute", NULL };
+
+/* Microphone */
+static const char *mictoggle[] = { "sb-mic", "toggle", NULL };
+
+/* Brightness */
+static const char *brightup[]   = { "sb-brightness", "up", NULL };
+static const char *brightdown[] = { "sb-brightness", "down", NULL };
+
+/* Lock screen */
+static const char *lockcmd[] = { "slock", NULL };
+
+/* Screenshot */
+static const char *shot_region[]  = { "screenshot", "region",  NULL };
+static const char *shot_window[]  = { "screenshot", "window",  NULL };
+static const char *shot_monitor[] = { "screenshot", "monitor", NULL };
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,	   {.v = dmenucmd } },
@@ -145,6 +167,22 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_minus,  incrgaps,       {.i = -1 } },
 	{ MODKEY,                       XK_g,      togglegaps,     {0} },
 	{ MODKEY|ShiftMask,             XK_g,      defaultgaps,    {0} },
+
+	/* lock */
+	{ MODKEY,			XK_x,			 spawn, {.v = lockcmd} },
+
+	/* statusbar */
+	{ 0,				XF86XK_AudioRaiseVolume, spawn, {.v = volup} },
+	{ 0,				XF86XK_AudioLowerVolume, spawn, {.v = voldown} },
+	{ 0,				XF86XK_AudioMute,	 spawn, {.v = volmute} },
+	{ 0,				XF86XK_AudioMicMute,	 spawn, {.v = mictoggle} },
+	{ 0,				XF86XK_MonBrightnessUp,	 spawn, {.v = brightup} },
+	{ 0,				XF86XK_MonBrightnessDown,spawn, {.v = brightdown} },
+
+	/* screenshot */
+	{ 0,				XK_Print,  spawn,	   {.v = shot_monitor } },
+	{ ShiftMask,			XK_Print,  spawn,	   {.v = shot_region  } },
+	{ MODKEY,			XK_Print,  spawn,	   {.v = shot_window  } },
 };
 
 /* button definitions */
