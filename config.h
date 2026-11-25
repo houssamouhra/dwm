@@ -12,8 +12,8 @@ static const double inactiveopacity = 0.9;	/* unfocused windows */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Maple Mono NF:size=10" };
-static const char dmenufont[]       = "Maple Mono NF:size=10";
+static const char *fonts[]          = { "JetBrainsMono NF:size=10" };
+static const char dmenufont[]       = "JetBrainsMono NF:size=10";
 
 static const char *colors[][3] = {
     /*                   fg         bg         border */
