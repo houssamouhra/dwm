@@ -850,6 +850,17 @@ expose(XEvent *e)
 }
 
 void
+setopacity(Client *c, double opacity)
+{
+	unsigned long val = (unsigned long)(opacity * 0xffffffffUL);
+
+	XChangeProperty(dpy, c->win,
+		XInternAtom(dpy, "_NET_WM_WINDOW_OPACITY", False),
+		XA_CARDINAL, 32, PropModeReplace,
+		(unsigned char *)&val, 1);
+}
+
+void
 focus(Client *c)
 {
 	if (!c || !ISVISIBLE(c))
@@ -866,6 +877,7 @@ focus(Client *c)
 		grabbuttons(c, 1);
 		XSetWindowBorder(dpy, c->win, scheme[SchemeSel][ColBorder].pixel);
 		setfocus(c);
+		setopacity(c, activeopacity);
 	} else {
 		XSetInputFocus(dpy, root, RevertToPointerRoot, CurrentTime);
 		XDeleteProperty(dpy, root, netatom[NetActiveWindow]);
@@ -1876,6 +1888,7 @@ unfocus(Client *c, int setfocus)
 {
 	if (!c)
 		return;
+	setopacity(c, inactiveopacity);
 	grabbuttons(c, 0);
 	XSetWindowBorder(dpy, c->win, scheme[SchemeNorm][ColBorder].pixel);
 	if (setfocus) {
