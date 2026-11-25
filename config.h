@@ -130,6 +130,7 @@ static const Key keys[] = {
 	{ MODKEY,			XK_e,	   spawn,          {.v = lfcmd } },
 	{ MODKEY,			XK_w,      killclient,     {0} },
 	{ MODKEY,			XK_f,      togglefullscr,  {0} },
+	{ MODKEY,			XK_c,	   spawn,	   SHCMD("clipmenu -vi -i -l 15") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
