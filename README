@@ -2,10 +2,22 @@ dwm - dynamic window manager
 ============================
 dwm is an extremely fast, small, and dynamic window manager for X.
 
+This is a personal build of dwm with a set of patches applied on top
+of the upstream source (see "Patches" below).
+
 
 Requirements
 ------------
 In order to build dwm you need the Xlib header files.
+
+Optional, depending on the features you use:
+
+- a compositor such as picom or xcompmgr, for the focus-based window opacity
+- dwmblocks-async (a build that supports statuscmd), for the clickable status bar
+- clipmenu, for the clipboard history binding
+- slock, for the lock screen binding
+- the helper scripts used by the media keys (sb-volume, sb-mic,
+  sb-brightness) found in my dots repo and the screenshot binding (screenshot script in the dots repo too)
 
 
 Installation
@@ -17,6 +29,10 @@ Afterwards enter the following command to build and install dwm (if
 necessary as root):
 
     make clean install
+
+Note: config.h is tracked directly in this repository (not
+config.def.h), and `make clean` also removes leftover patch artifacts
+(.orig and .rej files).
 
 
 Running dwm
@@ -44,5 +60,43 @@ like this in your .xinitrc:
 
 Configuration
 -------------
-The configuration of dwm is done by creating a custom config.h
+The configuration of dwm is done by editing config.h
 and (re)compiling the source code.
+
+
+Patches
+-------
+The following patches from https://dwm.suckless.org/patches/ are
+applied, roughly in the order they were added:
+
+- statuscmd
+- vanitygaps
+- colorbar
+- restartsig
+- hide_vacant_tags
+- actualfullscreen
+- alwayscenter
+- preventfocusshift
+- attachaside
+
+
+Keybindings
+-----------
+The full list lives in config.h. The main ones:
+
+    Mod + Space			dmenu launcher
+    Mod + q			terminal
+    Mod + w			close window
+    Mod + f			toggle fullscreen
+    Mod + b			toggle bar
+    Mod + c			clipboard history (clipmenu)
+    Mod + x			lock screen
+    Mod + = / -			increase / decrease gaps
+    Mod + g			toggle gaps
+    Mod + Shift + g		reset gaps to default
+    Mod + Shift + q		restart dwm
+    Mod + Shift + backspace	quit dwm
+    Print			screenshot (monitor)
+    Shift + Print		screenshot (region)
+    Mod + Print			screenshot (window)
+    Volume/brightness		XF86 media keys, via the sb-* scripts
