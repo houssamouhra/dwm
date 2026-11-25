@@ -1,5 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
+/* Constants */
+#define TERMINAL "st"
+
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -93,7 +96,9 @@ static const char *dmenucmd[] = {
     "-sf", "#c0caf5",
     NULL
 };
-static const char *termcmd[]  = { "st", NULL };
+
+/* commands */
+static const char *termcmd[]  = { TERMINAL, NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
