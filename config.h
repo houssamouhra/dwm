@@ -99,11 +99,13 @@ static const char *dmenucmd[] = {
 
 /* commands */
 static const char *termcmd[]  = { TERMINAL, NULL };
+static const char *lfcmd[]  = { TERMINAL, "-e", "lfub", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,	   {.v = dmenucmd } },
 	{ MODKEY,			XK_q,	   spawn,          {.v = termcmd } },
+	{ MODKEY,			XK_e,	   spawn,          {.v = lfcmd } },
 	{ MODKEY,			XK_w,      killclient,     {0} },
 	{ MODKEY,			XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
